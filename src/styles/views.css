@@ -1,0 +1,419 @@
+@layer views {
+  .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .section-heading h2 {
+    font-size: var(--fs-5);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .period {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--fs-2);
+    border: 1px solid var(--line-2);
+    border-radius: var(--r-ctl);
+    padding: 7px 11px;
+    background: var(--card);
+  }
+  .panel {
+    margin-top: 40px;
+    padding: 22px 24px 8px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-panel);
+  }
+  .saved-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--fs-2);
+    color: var(--leaf);
+    background: var(--insert-2);
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  /* Ledger: the passbook cover that answers "how much can I save?" */
+  .ledger {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 36px;
+    padding: 30px 32px;
+    background: var(--forest);
+    color: var(--on-forest);
+    border-radius: var(--r-panel);
+  }
+  .ledger-figure > span {
+    font-size: var(--fs-3);
+    color: var(--on-forest-2);
+  }
+  .ledger-figure strong {
+    display: block;
+    margin: 6px 0 10px;
+    font-family: var(--serif);
+    font-size: 68px;
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--insert);
+    font-variant-numeric: lining-nums;
+  }
+  .ledger-figure p {
+    font-size: var(--fs-3);
+    color: var(--on-forest-2);
+    max-width: 34ch;
+  }
+  .ledger-split {
+    align-self: center;
+  }
+  .ledger-bar {
+    position: relative;
+    display: flex;
+    gap: 3px;
+    height: 14px;
+    margin-bottom: 20px;
+  }
+  .ledger-bar > span {
+    flex-basis: 0;
+    min-width: 4px;
+    border-radius: 3px;
+  }
+  .ledger .spent {
+    background: #8fa985;
+  }
+  .ledger .still {
+    background: repeating-linear-gradient(
+      -45deg,
+      #8fa985 0 2px,
+      transparent 2px 6px
+    );
+    box-shadow: inset 0 0 0 1px #8fa98599;
+  }
+  .ledger .room {
+    background: var(--insert);
+  }
+  .goal-mark {
+    position: absolute;
+    top: -6px;
+    bottom: -6px;
+    width: 2px;
+    margin-left: -1px;
+    background: #fff;
+    border-radius: 1px;
+  }
+  .ledger dl {
+    margin: 0;
+    display: grid;
+    gap: 9px;
+    font-size: var(--fs-3);
+    font-variant-numeric: tabular-nums;
+  }
+  .ledger dl > div {
+    display: flex;
+    align-items: baseline;
+  }
+  .ledger dt {
+    flex: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    color: var(--on-forest-2);
+  }
+  /* Dotted leaders, as on a printed statement. */
+  .ledger dt::after {
+    content: "";
+    flex: 1;
+    margin: 0 10px;
+    border-bottom: 1px dotted var(--forest-line);
+  }
+  .ledger dt > i {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    align-self: center;
+  }
+  .ledger dd {
+    margin: 0;
+    font-weight: 500;
+  }
+  .ledger .ledger-income {
+    margin-top: 4px;
+    padding-top: 11px;
+    border-top: 1px dashed var(--forest-line);
+  }
+  .ledger .ledger-income dt {
+    color: var(--on-forest);
+  }
+
+  /* Budget table */
+  .budget-table td {
+    font-size: var(--fs-4);
+  }
+  .budget-table .category-dot {
+    margin-right: 12px;
+  }
+  .budget-value {
+    color: var(--muted);
+  }
+  .usage-cell {
+    width: 34%;
+  }
+  .usage {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .usage-bar {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--paper-2);
+    overflow: hidden;
+  }
+  .usage-bar span {
+    display: block;
+    height: 100%;
+    border-radius: 3px;
+    background: var(--over);
+    transition: width 0.4s var(--ease-out);
+  }
+  .usage-cell small {
+    width: 72px;
+    text-align: right;
+    font-size: var(--fs-2);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .budget-table tr.over small {
+    color: var(--over);
+    font-weight: 500;
+  }
+
+  /* Goal insert */
+  .goal-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 28px;
+    margin-top: 40px;
+    padding: 26px 28px;
+    background: var(--insert-2);
+    border: 1px solid #d6e2bb;
+    border-radius: var(--r-panel);
+  }
+  .goal-section h2 {
+    font-family: var(--serif);
+    font-size: var(--display-3);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--forest);
+  }
+  .goal-section p {
+    font-size: var(--fs-3);
+    color: var(--ink-2);
+    margin-top: 6px;
+    max-width: 44ch;
+  }
+  .goal-editor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .goal-field {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    padding: 6px 12px;
+    background: var(--card);
+    border: 1px solid var(--line-2);
+    border-radius: var(--r-ctl);
+    font-size: var(--fs-3);
+    color: var(--muted);
+  }
+  .goal-field:focus-within {
+    border-color: var(--leaf);
+    box-shadow: 0 0 0 3px #d5e3ae99;
+  }
+  .goal-field input {
+    width: 72px;
+    border: 0;
+    background: none;
+    padding: 2px 0;
+    font-size: var(--fs-6);
+    font-weight: 500;
+    color: var(--forest);
+    font-variant-numeric: tabular-nums;
+  }
+  .goal-field input:focus-visible {
+    outline: none;
+  }
+  .goal-editor .secondary.saved {
+    color: var(--leaf);
+    border-color: #b8c99c;
+  }
+
+  /* Transactions */
+  .transactions td {
+    font-size: var(--fs-4);
+  }
+  .transactions td strong {
+    font-weight: 500;
+  }
+  .transactions small {
+    display: block;
+    margin-top: 2px;
+    font-size: var(--fs-2);
+    color: var(--muted);
+  }
+  .category-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--fs-3);
+    color: var(--ink-2);
+  }
+  .category-label i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+  .transactions .number {
+    font-weight: 500;
+  }
+  .transactions tbody tr:hover,
+  .budget-table tbody tr:hover {
+    background: var(--paper);
+  }
+  .table-empty {
+    padding: 28px 0 32px;
+    text-align: center;
+    color: var(--muted);
+  }
+  .transaction-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  .transaction-toolbar > span {
+    font-size: var(--fs-2);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .search-box {
+    flex: 1;
+    max-width: 420px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 13px;
+    background: var(--paper);
+    border: 1px solid var(--line-2);
+    border-radius: var(--r-ctl);
+    color: var(--muted);
+  }
+  .search-box:focus-within {
+    border-color: var(--leaf);
+    box-shadow: 0 0 0 3px #d5e3ae99;
+  }
+  .search-box input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    background: none;
+    font-size: var(--fs-4);
+    color: var(--ink);
+  }
+  .search-box input:focus-visible {
+    outline: none;
+  }
+
+  /* Live plan & playground */
+  .draft-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+  .draft-actions > p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--fs-3);
+    color: var(--ink-2);
+  }
+  .playground {
+    display: grid;
+    gap: 22px;
+  }
+  .empty-workspace {
+    text-align: center;
+    padding: 56px 24px 64px;
+    background: var(--card);
+    border: 1px dashed var(--line-2);
+    border-radius: var(--r-panel);
+  }
+  .empty-art {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 22px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--insert-2);
+    color: var(--leaf);
+  }
+  .empty-workspace h2 {
+    font-family: var(--serif);
+    font-size: var(--display-2);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--forest);
+  }
+  .empty-workspace p {
+    max-width: 44ch;
+    margin: 12px auto 24px;
+    color: var(--ink-2);
+  }
+
+  @media (max-width: 1220px) {
+    .ledger {
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+  }
+  @media (max-width: 800px) {
+    .panel {
+      padding: 18px 16px 4px;
+      margin-top: 32px;
+    }
+    .ledger {
+      padding: 24px 20px;
+    }
+    .ledger-figure strong {
+      font-size: 56px;
+    }
+    .goal-section {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding: 22px 20px;
+      margin-top: 32px;
+    }
+    .usage-cell {
+      width: 30%;
+    }
+    .usage-cell small {
+      display: none;
+    }
+  }
+}

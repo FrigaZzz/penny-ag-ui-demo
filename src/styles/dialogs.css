@@ -1,0 +1,209 @@
+@layer dialogs {
+  .modal {
+    padding: 0;
+    border: 0;
+    border-radius: 18px;
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: var(--shadow-pop);
+    overflow: hidden;
+  }
+  .modal[open] {
+    display: flex;
+    flex-direction: column;
+    animation: rise 0.3s var(--ease-out);
+  }
+  .modal::backdrop {
+    background: rgb(16 39 30 / 0.5);
+    backdrop-filter: blur(2px);
+  }
+  .dialog-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 26px 28px 20px;
+    border-bottom: 1px dashed var(--line-2);
+  }
+  .dialog-header h2 {
+    font-family: var(--serif);
+    font-size: var(--display-2);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--forest);
+  }
+  .dialog-header p {
+    margin-top: 6px;
+    font-size: var(--fs-3);
+    color: var(--ink-2);
+  }
+
+  .event-dialog {
+    width: min(860px, 92vw);
+    height: min(760px, 88dvh);
+  }
+  .stream-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 28px;
+    border-bottom: 1px solid var(--line);
+  }
+  .stream-info code {
+    font-size: var(--fs-2);
+    color: var(--ink-2);
+  }
+  .native-flag {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--insert);
+    color: var(--forest);
+    font-size: var(--fs-1);
+    font-weight: 500;
+  }
+  .stream-info > .text-button {
+    margin-left: auto;
+  }
+  .event-list {
+    flex: 1;
+    overflow: auto;
+    padding: 0 28px 20px;
+  }
+  .event-list details {
+    border-bottom: 1px solid var(--line);
+  }
+  .event-list summary {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 11px 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: var(--fs-2);
+  }
+  .event-list summary::-webkit-details-marker {
+    display: none;
+  }
+  .event-list summary:hover code {
+    color: var(--forest);
+  }
+  .event-list time,
+  .event-list summary > span {
+    font-family: var(--mono);
+    font-size: var(--fs-1);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .event-list summary > span {
+    margin-left: auto;
+  }
+  .event-list summary > code {
+    color: var(--ink-2);
+  }
+  .event-list .arg-event {
+    color: var(--leaf);
+    font-weight: 600;
+  }
+  .event-list pre {
+    max-height: 300px;
+    overflow: auto;
+    margin: 0 0 12px;
+    padding: 14px;
+    border-radius: 10px;
+    background: var(--forest);
+    color: var(--on-forest);
+    font-size: var(--fs-2);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .empty-events {
+    padding-top: 40px;
+    text-align: center;
+    color: var(--muted);
+  }
+
+  .feature-guide {
+    width: min(560px, 94vw);
+    max-height: 90dvh;
+    overflow: auto;
+  }
+  .feature-list {
+    display: grid;
+    padding: 8px 20px;
+  }
+  .feature-list button {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    text-align: left;
+  }
+  .feature-list button:last-child {
+    border-bottom: 0;
+  }
+  .feature-list button:hover:not(:disabled) {
+    background: var(--insert-2);
+    border-radius: var(--r-ctl);
+  }
+  .feature-list button > span:nth-child(2) {
+    flex: 1;
+  }
+  .feature-list button > svg {
+    color: var(--muted);
+  }
+  .feature-icon {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    background: var(--insert-2);
+    color: var(--leaf);
+  }
+  .feature-list strong {
+    display: block;
+    font-size: var(--fs-4);
+  }
+  .feature-list small {
+    display: block;
+    margin-top: 1px;
+    font-size: var(--fs-2);
+    color: var(--muted);
+  }
+  .guide-note {
+    margin: 0 28px 24px;
+    padding: 12px 14px;
+    border-radius: var(--r-ctl);
+    background: var(--paper-2);
+    font-size: var(--fs-3);
+    color: var(--ink-2);
+  }
+
+  @media (max-width: 440px) {
+    .dialog-header {
+      padding: 22px 18px 16px;
+    }
+    .dialog-header h2 {
+      font-size: 28px;
+    }
+    .stream-info {
+      padding: 12px 18px;
+    }
+    .stream-info > .text-button {
+      margin-left: 0;
+    }
+    .event-list {
+      padding: 0 18px 16px;
+    }
+    .feature-list {
+      padding: 6px 10px;
+    }
+    .guide-note {
+      margin: 0 18px 18px;
+    }
+  }
+}
